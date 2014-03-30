@@ -1,0 +1,16 @@
+/* 
+    Created on : 30-mar-2014, 22:45:06
+    Author     : mtsuarez
+*/
+#text_zona_clientes{
+    color: #ffffff;
+}
+
+.text_box_home{
+    text-align: justify;
+}
+
+.img_box_home{
+    width: 150px;
+    right: 150px;
+}

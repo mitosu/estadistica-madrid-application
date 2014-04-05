@@ -2,6 +2,14 @@
     Created on : 30-mar-2014, 22:45:06
     Author     : mtsuarez
 */
+.style{
+    background-color: #E7E7E7;
+}
+
+.container-content{
+    background-color: #ffffff;
+}
+
 #text_zona_clientes{
     color: #ffffff;
 }
@@ -11,6 +19,11 @@
 }
 
 .img_box_home{
-    width: 150px;
-    right: 150px;
+    display: block;
+    text-align: center;
 }
+
+.img_center{
+     padding: 1em 3em; margin: 1em 25%;
+}
+

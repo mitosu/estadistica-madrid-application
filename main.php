@@ -10,9 +10,12 @@
         <title><?php echo _MIN_TITLE; ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script src="js/jquery-1.8.2.min.js"></script>
+        <script src="js/jquery.validationEngine.js"></script>
+        <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+        <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/stylepage.css">
+        <link rel="stylesheet" href="css/main.css">
         <style>
             body {
                 padding-top: 50px;
@@ -21,7 +24,20 @@
         </style>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
-
+        <script>
+            $(document).ready(function(){
+                $("#fecha_nacimiento").datepicker(
+                        {
+                            dateFormat: "dd-mm-yy",
+                            dayNames: ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabádo"],
+                            dayNamesMin: ["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
+                            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                            changeMonth: true,
+                            changeYear: true
+                        }
+                );
+            });
+        </script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
@@ -130,26 +146,84 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-        <div class="container">
-            <!-- Example row of columns -->
+        <div class="container container-aplication">
+            <!-- Formulario de Altas -->
             <div class="row">
-                <div class="col-md-4 text_box_home">      
-                    <div class="img_center"><img src="img/aviso-legal.png" alt="aviso legal" class="img-rounded img-responsive"></div>
-                    <h2>Aviso Legal</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a href="#" role="button">Más información &raquo;</a></p>
-                </div>
-                <div class="col-md-4 text_box_home">
-                    <div class="img_center"><img src="img/aviso-legal.png" alt="aviso legal" class="img-rounded img-responsive"></div>
-                    <h2>Protección de Datos</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a href="#" role="button">Más información &raquo;</a></p>
-                </div>
-                <div class="col-md-4 text_box_home">
-                    <div class="img_center"><img src="img/aviso-legal.png" alt="aviso legal" class="img-rounded img-responsive"></div>
-                    <h2>Manuales</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                    <p><a href="#" role="button">Más información &raquo;</a></p>
+                <div class="col-md-12">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#datos_personales" data-toggle="tab">Datos Personales</a></li>
+                        <li><a href="#datos_familiares" data-toggle="tab">Datos Familiares</a></li>
+                        <li><a href="#datos_profesionales" data-toggle="tab">Datos Profesionales</a></li>
+                        <li><a href="#datos_espirituales" data-toggle="tab">Datos Espirituales</a></li>
+                        <li><a href="#datos_espirituales_avanzados" data-toggle="tab">Datos Espirituales Avanzado</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="datos_personales">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3><span class="label label-primary">Datos Personales</span></h3>
+                                    <form role="form">
+                                        <p>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="nombre">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="apellidos">Apellidos</label>
+                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese apellidos ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                                    <input type="text" class="form-control" id="fecha_nacimiento" placeholder="Ingrese fecha">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="apellidos">Lugar de Nacimiento</label>
+                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese apellidos ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">File input</label>
+                                            <input type="file" id="exampleInputFile">
+                                            <p class="help-block">Example block-level help text here.</p>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Check me out
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        </p>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    dos
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="datos_familiares">
+                            Datos Famiiares
+                        </div>
+                        <div class="tab-pane fade" id="datos_profesionales">
+                            Datos Profesionales
+                        </div>
+                        <div class="tab-pane fade" id="datos_espirituales">
+                            Datos Espirituales
+                        </div>
+                        <div class="tab-pane fade" id="datos_espirituales_avanzado">
+                            Datos Espirituales
+                        </div>    
+                    </div>
+
                 </div>
             </div>
 
@@ -158,7 +232,7 @@
             <footer>
                 <p><?php echo _MIN_COPYRIGHT ?></p>
             </footer>
-        </div> <!-- /container --><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+        </div> <!-- /container --><!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>-->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>

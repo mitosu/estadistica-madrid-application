@@ -3,7 +3,47 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+/* 
+    Created on : 30-mar-2014, 22:45:06
+    Author     : mtsuarez
+*/
+.style{
+    background-color: #E7E7E7;
+}
 
+.container-content{
+    background-color: #ffffff;
+}
+
+.container-aplication{
+    //background-color: #999999;
+    //min-height: 600px;
+}
+
+#text_zona_clientes{
+    color: #ffffff;
+}
+
+.text_box_home{
+    text-align: justify;
+}
+
+.img_box_home{
+    display: block;
+    text-align: center;
+}
+
+.img_center{
+     padding: 1em 3em; margin: 1em 25%;
+}
+
+.labels-forms{
+    text-align: center;
+}
+
+option{
+    color: #000;
+}
 
 
 

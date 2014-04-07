@@ -28,12 +28,16 @@
             $(document).ready(function(){
                 $("#fecha_nacimiento").datepicker(
                         {
-                            dateFormat: "dd-mm-yy",
+                            dateFormat: "dd/mm/yy",
                             dayNames: ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabádo"],
                             dayNamesMin: ["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
                             monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                             changeMonth: true,
-                            changeYear: true
+                            changeYear: true,
+                            yearRange: '-100:+0',
+                            monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
+                            appendText: 'Haga click para seleccionar fecha',
+                            showAnim: 'slideDown'
                         }
                 );
             });
@@ -183,25 +187,17 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                                    <input type="text" class="form-control" id="fecha_nacimiento" placeholder="Ingrese fecha">
+                                                    <input type="text" class="form-control" id="fecha_nacimiento" placeholder="Seleccione fecha de nacimiento">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="apellidos">Lugar de Nacimiento</label>
-                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese apellidos ">
+                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese lugar de nacimiento ">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">File input</label>
-                                            <input type="file" id="exampleInputFile">
-                                            <p class="help-block">Example block-level help text here.</p>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Check me out
-                                            </label>
-                                        </div>
-                                        <button type="submit" class="btn btn-default">Submit</button>
+                                        </div>                                        
+                                        <button type="submit" class="btn btn-default">Guardar</button>
+                                        <button type="reset" class="btn btn-default">Restablecer</button>
+                                        <button type="button" class="btn btn-default">Consula rápida</button>
                                         </p>
                                     </form>
                                 </div>

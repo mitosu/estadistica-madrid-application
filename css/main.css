@@ -45,7 +45,13 @@ option{
     color: #000;
 }
 
+#txtnacionalidad{
+    visibility: hidden;
+}
 
+#lblnacionalidad{
+    visibility: hidden;
+}
 
 
 

@@ -25,21 +25,37 @@
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script>
-            $(document).ready(function(){
+            $(document).ready(function() {
                 $("#fecha_nacimiento").datepicker(
                         {
                             dateFormat: "dd/mm/yy",
-                            dayNames: ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabádo"],
-                            dayNamesMin: ["Dom","Lun","Mar","Mie","Jue","Vie","Sab"],
-                            monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                            dayNames: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabádo"],
+                            dayNamesMin: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                            monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                             changeMonth: true,
                             changeYear: true,
                             yearRange: '-100:+0',
-                            monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
-                            appendText: 'Haga click para seleccionar fecha',
+                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                             showAnim: 'slideDown'
                         }
                 );
+                $(document).on('mousemove',function(){
+                    var rdo = $("input[name='rdestadomigratorio']:checked").val();
+                    if(rdo === "2"){
+                        $('#lblnacionalidad').css('visibility','visible');
+                        $('#txtnacionalidad').css('visibility','visible');
+                    }
+                    else{
+                        $('#lblnacionalidad').css('visibility','hidden');
+                        $('#txtnacionalidad').css('visibility','hidden');
+                    }
+                });
+                $('#txtnacionalidad').click(function(){
+                    $('#txtnacionalidad').popover('show');
+                });
+                $('#txtnacionalidad').focusout(function(){
+                    $('#txtnacionalidad').popover('hide');
+                });
             });
         </script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -151,35 +167,34 @@
         </nav>
 
         <div class="container container-aplication">
-            <!-- Formulario de Altas -->
             <div class="row">
                 <div class="col-md-12">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#datos_personales" data-toggle="tab">Datos Personales</a></li>
-                        <li><a href="#datos_familiares" data-toggle="tab">Datos Familiares</a></li>
-                        <li><a href="#datos_profesionales" data-toggle="tab">Datos Profesionales</a></li>
-                        <li><a href="#datos_espirituales" data-toggle="tab">Datos Espirituales</a></li>
-                        <li><a href="#datos_espirituales_avanzados" data-toggle="tab">Datos Espirituales Avanzado</a></li>
-                    </ul>
-
-                    <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div class="tab-pane fade in active" id="datos_personales">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h3><span class="label label-primary">Datos Personales</span></h3>
-                                    <form role="form">
-                                        <p>
+                    <!-- Formulario de Altas -->
+                    <form role="form">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#datos_personales" data-toggle="tab">Datos Personales</a></li>
+                            <li><a href="#datos_familiares" data-toggle="tab">Datos Familiares</a></li>
+                            <li><a href="#datos_profesionales" data-toggle="tab">Datos Profesionales</a></li>
+                            <li><a href="#datos_espirituales" data-toggle="tab">Datos Espirituales</a></li>
+                            <li><a href="#datos_espirituales_avanzados" data-toggle="tab">Datos Espirituales Avanzado</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="datos_personales">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3><span class="label label-primary">Datos Personales</span></h3>                                  
+                                        <p></p>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label for="nombre">Nombre</label>
-                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre">
+                                                    <input type="text" class="form-control" id="nombre" name="txtnombre" placeholder="Ingrese nombre">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="apellidos">Apellidos</label>
-                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese apellidos ">
+                                                    <input type="text" class="form-control" id="apellidos" name="txtapellidos" placeholder="Ingrese apellidos ">
                                                 </div>
                                             </div>
                                         </div>
@@ -187,39 +202,69 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                                    <input type="text" class="form-control" id="fecha_nacimiento" placeholder="Seleccione fecha de nacimiento">
+                                                    <input type="text" class="form-control" id="fecha_nacimiento" name="txtfecna" placeholder="Seleccione fecha de nacimiento">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="apellidos">Lugar de Nacimiento</label>
-                                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese lugar de nacimiento ">
+                                                    <label for="pais">País</label>
+                                                    <input type="text" class="form-control" id="pais" name="txtpaisnac" placeholder="Ingrese país de nacimiento ">
                                                 </div>
                                             </div>
-                                        </div>                                        
-                                        <button type="submit" class="btn btn-default">Guardar</button>
-                                        <button type="reset" class="btn btn-default">Restablecer</button>
-                                        <button type="button" class="btn btn-default">Consula rápida</button>
-                                        </p>
-                                    </form>
-                                </div>
-                                <div class="col-md-6">
-                                    dos
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="ciudad">Ciudad</label>
+                                                    <input type="text" class="form-control" id="ciudad" name="txtciudadnac" placeholder="Ingrese ciudad de nacimiento ">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="localidad">Localidad</label>
+                                                    <input type="text" class="form-control" id="localidad" name="txtlocalidadnac" placeholder="Ingrese localidad de nacimiento ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label for="estado_migratorio">Indique su estado migratorio: </label>
+                                                    Residencia<input type="radio"  id="estado_migratorio_residencia" name="rdestadomigratorio" value="1">
+                                                    Nacionalidad<input type="radio"  id="estado_migratorio_nacionalidad" name="rdestadomigratorio" value="2">
+                                                    Pasaporte<input type="radio"  id="estado_migratorio_pasaporte" name="rdestadomigratorio" value="3">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label id="lblnacionalidad" for="nacionalidad">Nacionalidad</label>
+                                                    <input type="text" class="form-control" id="txtnacionalidad" name="txtnacionalidad" placeholder="Ingrese la nacionalidad" data-toggle="popover" data-placement="right" data-content="Si tiene más nacionalidades, escribalas separadas por coma.">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        dos
+                                    </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="datos_familiares">
+                                Datos Famiiares
+                            </div>
+                            <div class="tab-pane fade" id="datos_profesionales">
+                                Datos Profesionales
+                            </div>
+                            <div class="tab-pane fade" id="datos_espirituales">
+                                Datos Espirituales
+                            </div>
+                            <div class="tab-pane fade" id="datos_espirituales_avanzado">
+                                Datos Espirituales
+                            </div>    
                         </div>
-                        <div class="tab-pane fade" id="datos_familiares">
-                            Datos Famiiares
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-default">Guardar</button>
+                                <button type="reset" class="btn btn-default">Restablecer</button>
+                                <button type="button" class="btn btn-default">Consula rápida</button>
+                                <button type="button" class="btn btn-default">Salir</button>
+                            </div>
                         </div>
-                        <div class="tab-pane fade" id="datos_profesionales">
-                            Datos Profesionales
-                        </div>
-                        <div class="tab-pane fade" id="datos_espirituales">
-                            Datos Espirituales
-                        </div>
-                        <div class="tab-pane fade" id="datos_espirituales_avanzado">
-                            Datos Espirituales
-                        </div>    
-                    </div>
-
+                    </form>
                 </div>
             </div>
 

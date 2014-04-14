@@ -14,7 +14,6 @@
         <script src="js/jquery.validationEngine.js"></script>
         <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
         <script src="assets/say-cheese.js"></script>
-        <script src="js/ion.sound.js"></script>
         <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -28,69 +27,62 @@
         <link rel="stylesheet" href="css/main.css">
         <script>
             $(document).ready(function() {
-                $.ionSound({
-                sounds: [
-                        "camera_flashing_2"
-                ],
-                        path: "ion/sounds/",
-                        multiPlay: true,
-                        volume: "1.0"
-            });
+                var pic = new SayCheese('#boxpicture', {
+                    snapshots: true
+                });
 
-            var pic = new SayCheese('#boxpicture', {
-                snapshots: true
-            });
-            pic.start();
+                var width = 320, height = 240;
 
-            var width = 320, height = 240;
+                $('#camera-on').toggle(function() {
+                    pic.start();
+                }, function() {
+                    pic.stop();
+                    $('#boxpicture').empty();
+                });
 
-            $('#take-pic').click(function(e) {
-                $.ionSound.play("camera_flashing_2");
-                pic.takeSnapshot(width, height);
-                return false;
-            });
+                $('#take-pic').click(function(e) {
+                    pic.takeSnapshot(width, height);
+                    return false;
+                });
 
-            pic.on('snapshot', function(snapshot) {
-                var img = $('<img id="pic">');
-                img.attr('src', snapshot.toDataURL('image/png'));
-                img.appendTo('#preview-pic');
-            });
+                pic.on('snapshot', function(snapshot) {
+                    var img = $('<img id="pic">');
+                    img.attr('src', snapshot.toDataURL('image/png'));
+                    img.appendTo('#preview-pic');
+                });
 
-            $('#discard').click(function() {
-                $('#preview-pic').empty();
-            });
-
-            $("#fecha_nacimiento").datepicker(
-                    {
-                        dateFormat: "dd/mm/yy",
-                        dayNames: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabádo"],
-                        dayNamesMin: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
-                        monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-                        changeMonth: true,
-                        changeYear: true,
-                        yearRange: '-100:+0',
-                        monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-                        showAnim: 'slideDown'
+                $("#fecha_nacimiento").datepicker(
+                        {
+                            dateFormat: "dd/mm/yy",
+                            dayNames: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabádo"],
+                            dayNamesMin: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+                            monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                            changeMonth: true,
+                            changeYear: true,
+                            yearRange: '-100:+0',
+                            monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                            showAnim: 'slideDown'
+                        }
+                );
+                $(document).on('mousemove', function() {
+                    var rdo = $("input[name='rdestadomigratorio']:checked").val();
+                    if (rdo === "2") {
+                        $('#lblnacionalidad').css('visibility', 'visible');
+                        $('#txtnacionalidad').css('visibility', 'visible');
                     }
-            );
-            $(document).on('mousemove', function() {
-                var rdo = $("input[name='rdestadomigratorio']:checked").val();
-                if (rdo === "2") {
-                    $('#lblnacionalidad').css('visibility', 'visible');
-                    $('#txtnacionalidad').css('visibility', 'visible');
-                }
-                else {
-                    $('#lblnacionalidad').css('visibility', 'hidden');
-                    $('#txtnacionalidad').css('visibility', 'hidden');
-                }
+                    else {
+                        $('#lblnacionalidad').css('visibility', 'hidden');
+                        $('#txtnacionalidad').css('visibility', 'hidden');
+                    }
+                });
+                $('#txtnacionalidad').click(function() {
+                    $('#txtnacionalidad').popover('show');
+                });
+                $('#txtnacionalidad').focusout(function() {
+                    $('#txtnacionalidad').popover('hide');
+                });
             });
-            $('#txtnacionalidad').click(function() {
-                $('#txtnacionalidad').popover('show');
-            });
-            $('#txtnacionalidad').focusout(function() {
-                $('#txtnacionalidad').popover('hide');
-            });
-            });        </script>
+        </script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
@@ -283,7 +275,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-6">  
+                                                    <div class="col-md-6">
+                                                        <button id="camera-on" type="button" class="btn btn-default btn-sm pull-left">
+                                                            Cámara ON/OFF <span class="glyphicon glyphicon-off"></span>
+                                                        </button>  
                                                     </div>
                                                     <div class="col-md-6">
                                                         <button id="take-pic" type="button" class="btn btn-default btn-sm pull-right">

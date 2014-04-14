@@ -5,7 +5,7 @@
    ========================================================================== */
 /* 
     Created on : 30-mar-2014, 22:45:06
-    Author     : mtsuarez
+    Author     : miguelttorressuarez
 */
 .style{
     background-color: #E7E7E7;
@@ -53,7 +53,21 @@ option{
     visibility: hidden;
 }
 
+.boxpictures{
+    min-height: 190px;
+    margin-left: 4px;
+    margin-top: 4px;
+}
 
+video{
+    max-width: 262px;
+    max-height: 190px;
+}
+
+#pic{
+    max-width: 262px;
+    max-height: 190px;    
+}
 
 
 

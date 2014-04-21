@@ -52,7 +52,8 @@
 
                 pic.on('snapshot', function(snapshot) {
                     var img = $('<img id="pic">');
-                    img.attr('src', snapshot.toDataURL('image/png'));
+                    quality = snapshot.toDataURL('image/jpeg');
+                    img.attr('src', quality);
                     img.appendTo('#preview-pic');
                 });
 
@@ -459,13 +460,9 @@
                                         </div>                       
                                         <div class="form-group">
                                             <div class="row">           
-                                                <div class="col-md-6">
-                                                    <label for="nm_padre">Nombre del Padre</label>
-                                                    <input type="text" class="form-control" id="nm_padre" name="txtnm_padre" placeholder="Ingrese nombre del padre">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="nm_madre">Nombre de la Madre</label>
-                                                    <input type="text" class="form-control" id="nm_madre" name="txtnm_madre" placeholder="Ingrese nombre de la madre">
+                                                <div class="col-md-12">
+                                                    <label for="nm_padre">Aptitudes</label>
+                                                    <input type="text" class="form-control" id="aptitudes" name="txtaptitudes" placeholder="Ingrese aptitudes">
                                                 </div>
                                             </div>
                                         </div>
@@ -473,7 +470,7 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="comentarios">Comentarios</label>
-                                                    <input type="text" class="form-control" id="comentarios" name="txtcomentarios" placeholder="Ingrese algún comentario"> 
+                                                    <textarea id="comentarios" class="form-control" rows="2"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -481,9 +478,70 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="datos_espirituales">
-                                Datos Espirituales
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3><span class="label label-primary">Datos Espirituales</span></h3>
+                                        <p></p>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="grado_estudios">Grado de Estudios</label>
+                                                    <input type="text" class="form-control" id="grado_estudios" name="txtgrado_estudios" placeholder="lista grados estudios">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="estudio_realizado">Estudio Realizado</label>
+                                                    <input type="text" class="form-control" id="estudio_realizado" name="txtestudio_realizado" placeholder="Ingrese estudio realizado">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="otros_estudios">Otros Estudios</label>
+                                                    <input type="text" class="form-control" id="otros_estudios" name="txtotros_estudios" placeholder="Ingrese otros estudios o cursos">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="idiomas">Idiomas</label>
+                                                    <input type="text" class="form-control" id="idiomas" name="txtidiomas" placeholder="Ingrese idiomas">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="ocupacion">Ocupación</label>
+                                                    <input type="text" class="form-control" id="ocupacion" name="txtocupacion" placeholder="Ingrese ocupación">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="puesto">Puesto de Trabajo</label>
+                                                    <input type="text" class="form-control" id="puesto" name="txtpuesto" placeholder="Puesto de trabajo">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="empresa">Empresa</label>
+                                                    <input type="text" class="form-control" id="empresa" name="txtempresa" placeholder="Ingrese empresa">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="lugar">Lugar</label>
+                                                    <input type="text" class="form-control" id="lugar" name="txtlugar" placeholder="Ingrese lugar">
+                                                </div>
+                                            </div>
+                                        </div>                       
+                                        <div class="form-group">
+                                            <div class="row">           
+                                                <div class="col-md-12">
+                                                    <label for="nm_padre">Aptitudes</label>
+                                                    <input type="text" class="form-control" id="aptitudes" name="txtaptitudes" placeholder="Ingrese aptitudes">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="comentarios">Comentarios</label>
+                                                    <textarea id="comentarios" class="form-control" rows="2"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="datos_espirituales_avanzado">
+                            <div class="tab-pane fade" id="datos_espirituales_avanzados">
                                 Datos Espirituales Avanzado
                             </div>
                         </div>
@@ -502,8 +560,8 @@
 
                             </div>
                             <div class="col-md-6">
-                                <h4><span class="label label-default">ID Miembro</span></h4>
-                                <h4><span class="label label-default">123456</span></h4>
+                                <h4><span class="label label-default">ID Miembro: ARDJ-811026</span></h4>
+                                <h4><span class="label label-default">Código de Iglesia: ESM-01</span></h4>
                             </div>
                         </div>
                     </div>
